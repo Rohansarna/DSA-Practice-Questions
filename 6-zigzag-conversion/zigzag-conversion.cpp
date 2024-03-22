@@ -5,30 +5,27 @@ public:
         if (numRows <= 1)
             return s;
 
-        vector<string> v(numRows, "");
-
-        int j = 0, dir = -1;
-
+        vector<string> v(numRows , "");
+        int dir = -1;
+        int j = 0;
         for (int i = 0; i < s.length(); i++) {
-
-            if (j == numRows - 1 || j == 0)
-                dir *= (-1);
-
-            v[j] += s[i];
-
-            if (dir == 1)
-                j++;
-
-            else
+            if (j == 0 || j == (numRows - 1)) {
+                dir *= -1;
+            }
+                v[j] += s[i];
+            if (dir == -1) {
                 j--;
+            }
+            if (dir == 1) {
+                j++; 
+            }
         }
+        string res =""; 
+        for(auto &it : v ){
+            res += it; 
+        }
+        return res ;
 
-        string res;
-
-        for (auto& it : v)
-            res += it;
-
-        return res;
     }
     //  string convert(string s, int numRows) {
     //     int col = ceil(s.length() / 2);
