@@ -10,8 +10,7 @@
  */
 class Solution {
 public:
-  
-    ListNode* insertionSortList(ListNode* head) {
+   ListNode* insertionSortList(ListNode* head) {
         ListNode *previ = 0 ; 
         ListNode *prevj = 0 ; 
          for(auto i = head ; i != 0 ; i = i ->next){
