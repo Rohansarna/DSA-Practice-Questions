@@ -1,26 +1,18 @@
 class Solution {
 public:
     int lengthOfLastWord(string s) {
-        vector<int> v;
-        int count = 0;
-        for (int i = 0; i < s.length(); i++) {
-            if (s[i] == ' ') {
-                if(count != 0){
+        int count = 0 ;
 
-                v.push_back(count);
-                }
-                count = 0;
-            } else {
-                count++;
+        bool f = 0;  
+        for(int i = s.length()-1 ; i>=0 ; i--){
+            if(s[i] == ' ' && f){
+                break ; 
+            }
+            if(s[i]!= ' '){
+                count ++ ; 
+                f = 1;
             }
         }
-        for (auto x : v) {
-            cout << x << " ";
-        }
-         if(count != 0){
-
-                v.push_back(count);
-                }
-        return v[v.size() - 1];
+        return count ; 
     }
 };
