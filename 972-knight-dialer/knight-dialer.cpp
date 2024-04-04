@@ -1,44 +1,38 @@
+
 class Solution {
 public:
-    int knightDialer(int N) {
-        long kMod=1e9+7;
-		long hop1=1; // number of ways to form a distinct number ending with key 1
-		long hop2=1;
-		long hop3=1;
-		long hop4=1;
-		long hop5=1;
-		long hop6=1;
-		long hop7=1;
-		long hop8=1;
-		long hop9=1;
-		long hop0=1;
+int mod = 1e9 + 7 ; 
+    vector<vector<int>> adj = {{4, 6},    {6, 8}, {7, 9}, {4, 8}, {0, 3, 9}, {},
+                               {0, 1, 7}, {2, 6}, {1, 3}, {2, 4}
 
-		if(N==1) return 10;
-		for(int i=2;i<=N;i++)
-		{
-			long old_1=hop1;
-			long old_2=hop2;
-			long old_3=hop3;
-			long old_4=hop4;
-			long old_5=hop5;
-			long old_6=hop6;
-			long old_7=hop7;
-			long old_8=hop8;
-			long old_9=hop9;
-			long old_0=hop0;
+    };
+    int memo[5001][10]; 
+    int func(int n, int cell) {
+        if (n == 0) {
+            return 1;
+        }
+        if(memo[n][cell] != -1){
+            return memo[n][cell]; 
+        }
+        int ans =  0; 
+        for(int &nextcell : adj[cell])
+        {
+            ans = ans% mod  +  func(n-1 , nextcell)%mod; 
+        }
+        return memo[n][cell] =  ans%mod; 
 
-			hop1=(old_6+old_8)%kMod;
-			hop2=(old_7+old_9)%kMod;
-			hop3=(old_4+old_8)%kMod;
-			hop4=(old_3+old_9+old_0)%kMod;
-			hop5=0;
-			hop6=(old_1+old_7+old_0)%kMod;
-			hop7=(old_2+old_6)%kMod;
-			hop8=(old_1+old_3)%kMod;
-			hop9=(old_2+old_4)%kMod;
-			hop0=(old_4+old_6)%kMod;
-		}
 
-		return (hop1+hop2+hop3+hop4+hop6+hop7+hop8+hop9+hop0)%kMod;
+
+    }
+    int knightDialer(int n) {
+        int x = 5001 , y= 10; 
+        memset(memo , -1 , sizeof(memo)); 
+        int res = 0 ; 
+        for(int i = 0 ; i <= 9 ; i++){
+            res = res%mod  +  func(n-1 , i )% mod ;
+        }
+        return res%mod; 
+
+
     }
 };
