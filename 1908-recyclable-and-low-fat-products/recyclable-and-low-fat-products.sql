@@ -1,6 +1,5 @@
 # Write your MySQL query statement below
-
-
-Select product_id
+Select Product_id
 from Products
-where Products.low_fats = "Y" AND Products.recyclable = "Y"; 
+where Products.low_fats = 'Y' and Products.recyclable ='Y';
+
