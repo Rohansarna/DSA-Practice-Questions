@@ -10,21 +10,10 @@
  */
 class Solution {
 public:
-    ListNode* ReverseLL(ListNode* x) {
-        // ListNode* prev = 0;
-        // ListNode* curr = x;
-        // while (curr != 0) {
-        //     ListNode* f = curr->next;
-        //     curr->next = prev;
-        //     prev = curr;
-        //     curr = f;
-        // }
-        // return prev;
-        return x ; 
-    }
+   
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
-        ListNode* x = ReverseLL(l1);
-        ListNode* y = ReverseLL(l2);
+        ListNode* x = l1;
+        ListNode* y = l2;
         int carry = 0;
         ListNode* res = new ListNode(0);
         ListNode* ress = res;
