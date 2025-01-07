@@ -1,5 +1,6 @@
 class Solution {
 public:
+    // Kadane Algo very important !!
     int maxSubArray(vector<int>& nums) {
         int res = nums[0]; 
         int maxi = nums[0]; 
