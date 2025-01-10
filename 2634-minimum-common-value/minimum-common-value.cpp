@@ -1,4 +1,4 @@
-#include <bits/stdc++.h>
+
 class Solution {
 public:
     int getCommon(vector<int>& num1, vector<int>& num2) {
