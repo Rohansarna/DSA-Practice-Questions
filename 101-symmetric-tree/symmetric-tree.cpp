@@ -11,23 +11,18 @@
  */
 class Solution {
 public:
-    bool func(TreeNode *root1 , TreeNode *root2){
-        if(!root1 && !root2 ){
-            return 1; 
+    bool func(TreeNode *root , TreeNode*root2){
+        if(root  && root2){
+            bool f = func(root ->left , root2 ->right); 
+            bool f2 = func(root ->right , root2 ->left); 
+            return root->val == root2->val && f && f2; 
         }
-        if(root1 ==0 || root2 == 0 )
-        {
-            return 0 ; 
+        if(root || root2){
+            return 0; 
         }
-        else{
-            bool f = root1 ->val == root2 ->val ; 
-            bool left = func(root1 ->left , root2 ->right); 
-            bool right= func(root1 ->right, root2 ->left);
-            return f && left && right;  
-        }
-        
+        return 1; 
     }
     bool isSymmetric(TreeNode* root) {
-      return func(root , root); 
+        return func(root , root ); 
     }
 };
