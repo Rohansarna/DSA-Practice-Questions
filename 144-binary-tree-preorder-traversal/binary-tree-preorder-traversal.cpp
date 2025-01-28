@@ -11,26 +11,19 @@
  */
 class Solution {
 public:
-vector<int>res; 
-    void func(TreeNode *root){
+    void func(TreeNode *root , vector<int>&v ){
         if(root ){
-            res.push_back(root ->val); 
-            if(root ->left){
-
-            func(root ->left); 
-            }
-            if(root ->right){
-
-            func(root ->right); 
-            }
+            v.push_back(root->val  ); 
+            func(root->left  , v ); 
+            func(root->right , v ); 
+            return ; 
         }
         return ; 
     }
-
     vector<int> preorderTraversal(TreeNode* root) {
-        vector<int> x ; 
-        res = x ; 
-        func(root); 
-        return res ; 
+        vector<int> v ; 
+        func(root , v ); 
+        return v ;
+
     }
 };
