@@ -11,16 +11,21 @@
  */
 class Solution {
 public:
+    int func(TreeNode *root){
+        if(root ){
+            int lh = func(root ->left); 
+            int rh = func(root ->right);  
+            if(lh == 0 ){
+                return 1 + rh ; 
+            }
+            else if(rh == 0 ){
+                return 1 + lh; 
+            }
+            return 1 + min(lh , rh ); 
+        }
+        return 0 ;
+    }
     int minDepth(TreeNode* root) {
-        if(!root ){
-            return 0; 
-        }
-        if(!root ->left){
-            return 1 + minDepth(root ->right)  ; 
-        }
-        if(!root ->right){
-            return 1 + minDepth(root ->left)  ;
-        }
-        return 1 + min(minDepth(root ->left) , minDepth( root ->right))  ; 
+        return func(root ); 
     }
 };
