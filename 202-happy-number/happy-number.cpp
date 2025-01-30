@@ -1,34 +1,32 @@
 class Solution {
 public:
+    bool func(int n, map<int, int>& m) {
+       if(n <=9){
+        if(n == 1 || n == 7){
+            return 1; 
+        }
+        return 0; 
+       }
+        int sum = 0 ; 
+        while(n )
+        {
+            int x = n %10 ; 
+            sum += m[x]; 
+            n = n/10; 
+        }
+        return func(sum , m ); 
+
+
+    }
+
     bool isHappy(int n) {
-        map<int ,int> res_c ;
-        for(int i = 0 ; i<= 9  ; i++){
-            res_c[i] = (i*i); 
-        }
-        map<int,int> m; 
-        m[0] = 0 ;
-        m[1] = 1;
-        m[2] = 0 ; 
-        m[3] = 0 ; 
-        m[4] = 0; 
-        m[5] = 0 ; 
-        m[6] = 0 ; 
-        m[8] = 0 ; 
-        m[9] = 0 ; 
-        m[7] = 1 ; 
-
-        while(n > 9 ){
-            int x = n ;
-            int sum = 0 ;   
-            while(x > 0){
-                int a = x %10 ; 
-                x = x / 10;
-                sum += res_c[a];  
-            }
-            n = sum ; 
-
-        }
-       return m[n];
-
+        map<int,int> m ;  
+        for(int i  = 0 ; i<= 9 ; i++){
+            m[i] = i*i ; 
+        } 
+    return func(n , m); 
+    // return 0 ; 
+    
+    
     }
 };
